@@ -1,0 +1,29 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.env
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+# Fabric / Power BI
+*.pbix.bak
+*.pbit.tmp
+# Playwright
+test-results/
+playwright-report/
+# macOS / Windows junk
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+# Secrets
+**/secrets.yaml
+# Review bundles (build artifacts)
+review_pack_v*.tar.gz
+fabric_cicd.error.log
+phase2_deploy.log
+uat_deploy.log
+prod_deploy.log
+.claude/

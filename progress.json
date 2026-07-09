@@ -1,0 +1,18 @@
+{
+  "project": "itrade-tariff-semantic-model",
+  "phase": "TSPLIT",
+  "iteration": 3,
+  "max_iterations_per_phase": 15,
+  "no_progress_limit": 3,
+  "test_first_ratio": null,
+  "last_red_commit_sha": null,
+  "steps": {
+    "scaffold": "done",
+    "tmdl_subset": "done",
+    "make_check": "done",
+    "deploy": "done",
+    "live_validation": "done",
+    "status_report": "done"
+  },
+  "notes": "Phase TSPLIT complete — see status/phase_TSPLIT_report.json. CI/CD automation deferred (SP lacks workspace role)."
+}

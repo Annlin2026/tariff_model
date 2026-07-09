@@ -1,0 +1,35 @@
+relationship fact_tariff_importer
+    fromColumn: fact_tariff_rate.importer_code
+    toColumn: dim_country.country_id
+    isActive: false
+    crossFilteringBehavior: oneDirection
+
+relationship fact_tariff_exporter
+    fromColumn: fact_tariff_rate.exporter_code
+    toColumn: dim_country.country_id
+    isActive: true
+    crossFilteringBehavior: oneDirection
+
+relationship fact_tariff_importer_role
+    fromColumn: fact_tariff_rate.importer_code
+    toColumn: dim_country_partner.country_id
+    isActive: true
+    crossFilteringBehavior: oneDirection
+
+relationship fact_tariff_hs
+    fromColumn: fact_tariff_rate.hs_code
+    toColumn: dim_hs_code.hs_code
+    isActive: true
+    crossFilteringBehavior: oneDirection
+
+relationship fact_tariff_type
+    fromColumn: fact_tariff_rate.tariff_type
+    toColumn: dim_tariff_detail.tariff_type
+    isActive: true
+    crossFilteringBehavior: oneDirection
+
+relationship fact_tariff_time
+    fromColumn: fact_tariff_rate.txn_year
+    toColumn: dim_time_year.year
+    isActive: true
+    crossFilteringBehavior: oneDirection

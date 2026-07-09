@@ -1,0 +1,6 @@
+perspective Tariff
+    perspectiveTable fact_tariff_rate
+    perspectiveTable dim_country
+    perspectiveTable dim_country_partner
+    perspectiveTable dim_hs_code
+    perspectiveTable dim_tariff_detail

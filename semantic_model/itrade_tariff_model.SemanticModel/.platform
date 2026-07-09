@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "itrade_tariff_model"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4e52447e-16d4-4c4f-a199-71bf82c7f671"
+  }
+}

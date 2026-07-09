@@ -1,0 +1,120 @@
+{
+  "平均關稅率%": "fact_tariff_rate:Avg Tariff Rate %",
+  "最低關稅率%": "fact_tariff_rate:Min Tariff Rate %",
+  "最高關稅率%": "fact_tariff_rate:Max Tariff Rate %",
+  "優惠稅率%": "fact_tariff_rate:Preferential Rate %",
+
+  "進口國": "dim_country.country_name_zh",
+  "出口國": "dim_country.country_name_zh",
+  "國家代碼": "dim_country.country_id",
+  "區域代碼": "dim_country.area_id",
+  "區域名稱": "dim_country.area_name",
+
+  "HS6碼": "dim_hs_code.hs_code",
+  "HS中文品名": "dim_hs_code.hs_code_zh",
+  "HS6碼及中文品名": "dim_hs_code.hs_code_combined",
+  "HS品名群組": "dim_hs_code.hs_code_group",
+  "產業代碼": "dim_hs_code.industry_id",
+  "產業名稱_HS": "dim_hs_code.industry_name",
+  "HS2碼": "dim_hs_code.hs2_code",
+  "HS2中文名稱": "dim_hs_code.hs2_nm_zh",
+  "HS4碼": "dim_hs_code.hs4_code",
+  "HS4中文名稱": "dim_hs_code.hs4_nm_zh",
+
+  "台灣HS11碼": "dim_hs_code_tw.hs_code_tw",
+  "台灣HS中文品名": "dim_hs_code_tw.hs_code_tw_zh",
+  "對應HS6碼": "dim_hs_code_tw.hs_code_6",
+
+  "產業鍵": "dim_industry.industry_key",
+  "部門名稱": "dim_industry.dept_name",
+  "產業大類": "dim_industry.category",
+  "產業項目": "dim_industry.item",
+  "標準產業": "dim_industry.standard_industry",
+  "使用者產業": "dim_industry.user_industry",
+  "產業層級": "dim_industry.level",
+  "產業層級名稱": "dim_industry.level_name",
+  "產業中文名稱": "dim_industry.industry_nm_zh",
+
+  "區域ID": "dim_area.area_id",
+  "區域中文名": "dim_area.area_name",
+  "區域英文名": "dim_area.area_name_en",
+
+  "年度": "dim_time_year.year",
+  "年度標籤": "dim_time_year.year_label",
+  "期間類型": "dim_time_year.period_type",
+
+  "年月": "dim_time_month.year_month",
+  "月份": "dim_time_month.month",
+  "年份_月表": "dim_time_month.year",
+  "年月標籤": "dim_time_month.year_month_label",
+
+  "關稅類型": "dim_tariff_detail.tariff_type_zh",
+
+  "自X國進口額(千美元)": "fact_market_import_situation:Partner Import Value (K USD)",
+  "自全球進口總額(千美元)": "fact_market_import_situation:Reporter Total Import (K USD)",
+  "自X國進口佔比": "fact_market_import_situation:Partner Import Share %",
+  "自X國進口成長率": "fact_market_import_situation:Partner Import Growth %",
+  "市佔排名": "fact_market_import_situation:Market Share Rank",
+
+  "自來源國進口額(千美元)_C3": "fact_market_import_source_countries:Source Import Value (K USD)",
+  "自來源國進口佔比_C3": "fact_market_import_source_countries:Source Import Share % (C3)",
+  "自來源國進口成長率_C3": "fact_market_import_source_countries:Source Import Growth % (C3)",
+  "自來源國進口排名_C3": "fact_market_import_source_countries:Source Import Rank (C3)",
+
+  "進口產品額(千美元)_C4": "fact_market_import_demand_products:Product Import Value (K USD)",
+  "進口產品佔比_C4": "fact_market_import_demand_products:Product Import Share % (C4)",
+  "進口產品成長率_C4": "fact_market_import_demand_products:Product Import Growth % (C4)",
+  "進口產品排名_C4": "fact_market_import_demand_products:Product Import Rank (C4)",
+
+  "出口全球額(千美元)_C5": "fact_market_export_situation:Global Export Value (K USD)",
+  "出口成長率_C5": "fact_market_export_situation:Export Growth % (C5)",
+  "出口市場佔比_C5": "fact_market_export_situation:Export Market Share % (C5)",
+  "出口市場排名_C5": "fact_market_export_situation:Export Market Rank (C5)",
+
+  "出口產品額(千美元)_C6": "fact_market_export_product_details:Product Export Value (K USD)",
+  "出口產品佔比_C6": "fact_market_export_product_details:Product Export Share % (C6)",
+  "出口產品成長率_C6": "fact_market_export_product_details:Product Export Growth % (C6)",
+  "出口產品排名_C6": "fact_market_export_product_details:Product Export Rank (C6)",
+
+  "產業進口額(千美元)_C7": "fact_market_industry_import:Industry Import Value (K USD)",
+  "產業進口佔比_C7": "fact_market_industry_import:Industry Import Share % (C7)",
+  "產業進口成長率_C7": "fact_market_industry_import:Industry Import Growth % (C7)",
+  "產業市佔排名_C7": "fact_market_industry_import:Industry Market Share Rank (C7)",
+
+  "產業來源國進口額(千美元)_C8": "fact_market_industry_source_countries:Source Industry Import Value (K USD)",
+  "產業來源國進口成長率_C8": "fact_market_industry_source_countries:Source Industry Growth % (C8)",
+  "產業來源國排名_C8": "fact_market_industry_source_countries:Source Industry Rank (C8)",
+
+  "產業需求產品額(千美元)_C9": "fact_market_industry_demand_products:Industry Product Import Value (K USD)",
+  "產業需求產品成長率_C9": "fact_market_industry_demand_products:Industry Product Growth % (C9)",
+  "產業需求產品排名_C9": "fact_market_industry_demand_products:Industry Product Rank (C9)",
+
+  "自全球進口額(千美元)_C10": "fact_product_global_import:Global Import Value (K USD) (C10)",
+  "自臺灣進口額(千美元)_C10": "fact_product_global_import:TW Import Value (K USD) (C10)",
+  "臺灣市場佔比_C10": "fact_product_global_import:TW Market Share % (C10)",
+  "臺灣佔比排名_C10": "fact_product_global_import:TW Share Rank (C10)",
+  "全球進口成長率_C10": "fact_product_global_import:Global Import Growth % (C10)",
+  "臺灣進口成長率_C10": "fact_product_global_import:TW Import Growth % (C10)",
+
+  "來源國產品進口額(千美元)_C11": "fact_product_global_import_sources:Source Product Import Value (K USD) (C11)",
+  "來源國產品佔比_C11": "fact_product_global_import_sources:Source Product Share % (C11)",
+  "來源國產品成長率_C11": "fact_product_global_import_sources:Source Product Growth % (C11)",
+  "來源國產品排名_C11": "fact_product_global_import_sources:Source Product Rank (C11)",
+
+  "產業全球進口額(千美元)_C16": "fact_industry_global_import:Industry Global Import Value (K USD) (C16)",
+  "臺灣產業進口額(千美元)_C16": "fact_industry_global_import:TW Industry Import Value (K USD) (C16)",
+  "產業臺灣佔比_C16": "fact_industry_global_import:Industry TW Share % (C16)",
+  "產業臺灣佔比排名_C16": "fact_industry_global_import:Industry TW Share Rank (C16)",
+  "產業全球成長率_C16": "fact_industry_global_import:Industry Global Growth % (C16)",
+  "產業臺灣成長率_C16": "fact_industry_global_import:Industry TW Growth % (C16)",
+
+  "產業來源國進口額(千美元)_C17": "fact_industry_import_source_countries:Source Industry Import Value (K USD) (C17)",
+  "產業來源國佔比_C17": "fact_industry_import_source_countries:Source Industry Share % (C17)",
+  "產業來源國成長率_C17": "fact_industry_import_source_countries:Source Industry Growth % (C17)",
+  "產業來源國排名_C17": "fact_industry_import_source_countries:Source Industry Rank (C17)",
+
+  "產業需求產品額(千美元)_C18": "fact_industry_import_demand_products:Industry Product Import Value (K USD) (C18)",
+  "產業需求產品佔比_C18": "fact_industry_import_demand_products:Industry Product Share % (C18)",
+  "產業需求產品成長率_C18": "fact_industry_import_demand_products:Industry Product Growth % (C18)",
+  "產業需求產品排名_C18": "fact_industry_import_demand_products:Industry Product Rank (C18)"
+}

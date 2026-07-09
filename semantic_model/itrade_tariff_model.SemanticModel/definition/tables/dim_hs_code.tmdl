@@ -1,0 +1,91 @@
+table dim_hs_code
+    lineageTag: 10000000-0000-4000-8000-000000000010
+
+    column hs_code
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000011
+        summarizeBy: none
+        sourceColumn: HS_CODE
+        isKey
+
+    column hs_code_zh
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000012
+        summarizeBy: none
+        sourceColumn: HS_CODE_ZH
+
+    /// Issue #48: pre-concatenated "code - 中文名" for the 多國關稅比較 HS slicer.
+    /// Materialised at gold (GOLD_DIM_HS_CODE, warehouse repo alwaysmycute/myp#19);
+    /// DirectLake can't host a DAX calc column. NULL/blank ZH falls back to bare
+    /// HS_CODE (never null).
+    column hs_code_combined
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000218
+        summarizeBy: none
+        sourceColumn: HS_CODE_COMBINED
+
+    column hs_code_group
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000013
+        summarizeBy: none
+        sourceColumn: HS_CODE_GROUP
+
+    column industry_id
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000014
+        summarizeBy: none
+        sourceColumn: INDUSTRY_ID
+
+    column industry_name
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000015
+        summarizeBy: none
+        sourceColumn: INDUSTRY
+
+    column hs2_code
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000210
+        summarizeBy: none
+        sourceColumn: HS2_CODE
+
+    column hs2_nm_zh
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000216
+        summarizeBy: none
+        sourceColumn: HS2_NM_ZH
+
+    column hs4_code
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000211
+        summarizeBy: none
+        sourceColumn: HS4_CODE
+
+    column hs4_nm_zh
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000217
+        summarizeBy: none
+        sourceColumn: HS4_NM_ZH
+
+    hierarchy hs_code_hierarchy
+        lineageTag: 10000000-0000-4000-8000-000000000212
+
+        level hs2
+            lineageTag: 10000000-0000-4000-8000-000000000213
+            column: hs2_code
+
+        level hs4
+            lineageTag: 10000000-0000-4000-8000-000000000214
+            column: hs4_code
+
+        level hs6
+            lineageTag: 10000000-0000-4000-8000-000000000215
+            column: hs_code
+
+    partition dim_hs_code = entity
+        mode: directLake
+        source
+            entityName: GOLD_DIM_HS_CODE
+            schemaName: comtrade_ralph_dev
+            expressionSource: DatabaseQuery
+
+    annotation PBI_ResultType = Table

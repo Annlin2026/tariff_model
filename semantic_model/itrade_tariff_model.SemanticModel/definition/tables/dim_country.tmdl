@@ -1,0 +1,47 @@
+table dim_country
+    lineageTag: 10000000-0000-4000-8000-000000000001
+
+    column country_id
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000002
+        summarizeBy: none
+        sourceColumn: COUNTRY_ID
+        isKey
+
+    column country_name_zh
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000003
+        summarizeBy: none
+        sourceColumn: COUNTRY_COMM_ZH
+
+    column area_id
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000004
+        summarizeBy: none
+        sourceColumn: AREA_ID
+
+    column area_name
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000005
+        summarizeBy: none
+        sourceColumn: AREA_NM
+
+    hierarchy area_country_hierarchy
+        lineageTag: 10000000-0000-4000-8000-000000000200
+
+        level area
+            lineageTag: 10000000-0000-4000-8000-000000000201
+            column: area_id
+
+        level country
+            lineageTag: 10000000-0000-4000-8000-000000000202
+            column: country_id
+
+    partition dim_country = entity
+        mode: directLake
+        source
+            entityName: GOLD_DIM_COUNTRY
+            schemaName: comtrade_ralph_dev
+            expressionSource: DatabaseQuery
+
+    annotation PBI_ResultType = Table

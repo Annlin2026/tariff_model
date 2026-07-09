@@ -1,0 +1,81 @@
+table fact_tariff_rate
+    lineageTag: 20000000-0000-4000-8000-000000000001
+
+    column txn_year
+        dataType: int64
+        lineageTag: 20000000-0000-4000-8000-000000000002
+        summarizeBy: none
+        sourceColumn: TXN_YEAR
+
+    column importer_code
+        dataType: string
+        lineageTag: 20000000-0000-4000-8000-000000000003
+        summarizeBy: none
+        sourceColumn: IMPORTER_CODE
+
+    column exporter_code
+        dataType: string
+        lineageTag: 20000000-0000-4000-8000-000000000004
+        summarizeBy: none
+        sourceColumn: EXPORTER_CODE
+
+    column hs_code
+        dataType: string
+        lineageTag: 20000000-0000-4000-8000-000000000005
+        summarizeBy: none
+        sourceColumn: HS_CODE
+
+    column tariff_type
+        dataType: string
+        lineageTag: 20000000-0000-4000-8000-000000000006
+        summarizeBy: none
+        sourceColumn: TARIFF_TYPE
+
+    column min_rate_pct
+        dataType: double
+        lineageTag: 20000000-0000-4000-8000-000000000007
+        summarizeBy: none
+        sourceColumn: MIN_RATE_PCT
+
+    column max_rate_pct
+        dataType: double
+        lineageTag: 20000000-0000-4000-8000-000000000008
+        summarizeBy: none
+        sourceColumn: MAX_RATE_PCT
+
+    column avg_rate_pct
+        dataType: double
+        lineageTag: 20000000-0000-4000-8000-000000000009
+        summarizeBy: none
+        sourceColumn: AVG_RATE_PCT
+
+    column preferential_pct
+        dataType: double
+        lineageTag: 20000000-0000-4000-8000-00000000000a
+        summarizeBy: none
+        sourceColumn: PREFERENTIAL_PCT
+
+    measure 'Avg Tariff Rate %' = AVERAGE(fact_tariff_rate[avg_rate_pct])
+        formatString: 0.00"%"
+        lineageTag: 20000000-0000-4000-8000-000000000100
+
+    measure 'Min Tariff Rate %' = MIN(fact_tariff_rate[min_rate_pct])
+        formatString: 0.00"%"
+        lineageTag: 20000000-0000-4000-8000-000000000101
+
+    measure 'Max Tariff Rate %' = MAX(fact_tariff_rate[max_rate_pct])
+        formatString: 0.00"%"
+        lineageTag: 20000000-0000-4000-8000-000000000102
+
+    measure 'Preferential Rate %' = AVERAGE(fact_tariff_rate[preferential_pct])
+        formatString: 0.00"%"
+        lineageTag: 20000000-0000-4000-8000-000000000103
+
+    partition fact_tariff_rate = entity
+        mode: directLake
+        source
+            entityName: GOLD_FACT_TARIFF_RATE
+            schemaName: comtrade_ralph_dev
+            expressionSource: DatabaseQuery
+
+    annotation PBI_ResultType = Table

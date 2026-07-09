@@ -1,0 +1,30 @@
+table dim_time_year
+    lineageTag: 10000000-0000-4000-8000-000000000250
+
+    column year
+        dataType: int64
+        lineageTag: 10000000-0000-4000-8000-000000000251
+        summarizeBy: none
+        sourceColumn: YEAR
+        isKey
+
+    column year_label
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000252
+        summarizeBy: none
+        sourceColumn: YEAR_LABEL
+
+    column period_type
+        dataType: string
+        lineageTag: 10000000-0000-4000-8000-000000000253
+        summarizeBy: none
+        sourceColumn: PERIOD_TYPE
+
+    partition dim_time_year = entity
+        mode: directLake
+        source
+            entityName: GOLD_DIM_TIME_YEAR
+            schemaName: comtrade_ralph_dev
+            expressionSource: DatabaseQuery
+
+    annotation PBI_ResultType = Table

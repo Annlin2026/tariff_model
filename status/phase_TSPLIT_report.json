@@ -1,0 +1,37 @@
+{
+  "phase": "TSPLIT",
+  "completed_at": "2026-07-09",
+  "result": "PASS",
+  "model": {
+    "name": "itrade_tariff_model",
+    "dataset_id": "217458bd-40a3-4684-ab00-faa5e65232fc",
+    "workspace": "IH_DataTeam_Ann (aa4e76f5-3e7a-4de2-a6d5-6ab0815cbfd8)",
+    "tables": ["fact_tariff_rate", "dim_country", "dim_country_partner", "dim_hs_code", "dim_tariff_detail", "dim_time_year"],
+    "relationships": 6,
+    "measures": 4,
+    "perspective": "Tariff",
+    "mode": "directLake (GOLD_FACT_TARIFF_RATE @ comtrade_ralph_dev, Trade_Data_Warehouse)"
+  },
+  "backpressure": {
+    "make_check": "PASS (ruff + sqlfluff + tmdl_lint 0 violations + 46 unit tests)",
+    "test_tariff_static": "27 passed, 5 live-gated skipped"
+  },
+  "deploy": {
+    "tool": "fabric-cicd 0.1.34 via scripts/deploy_split_dev.py (spec functions, AzureCliCredential)",
+    "framing_seconds": 46.33,
+    "evidence": "status/tariff_deploy_evidence.json"
+  },
+  "live_validation": {
+    "all_match": true,
+    "probes": {
+      "rowcount": "444392932 rows, identical both models",
+      "measures_modelwide": "avg 7.7777 / min 0.0 / max 3000.0 / pref 1.1303 — identical",
+      "avg_by_year": "8 year-rows identical",
+      "rowlevel_us_800300": "337 rows (exporter=US/842, HS 800300), row-level identical"
+    },
+    "evidence": "status/tariff_split_validation.json"
+  },
+  "open_items": [
+    "CI/CD automation deferred per user 2026-07-09: SP taitra-mcp-fabric needs Member role on workspace aa4e76f5 before spec's deploy_model.py/GitHub Actions path runs headless"
+  ]
+}

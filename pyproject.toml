@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "itrade-tariff-semantic-model"
+version = "0.1.0"
+description = "iTrade Tariff Semantic Model split from itrade_trade_model (Ralph Loop spec)"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fabric-cicd==0.1.34",
+  "azure-identity>=1.15,<2",
+  "requests>=2.32,<3",
+  "polars>=0.20,<2",
+  "pyyaml>=6,<7",
+  "python-dotenv>=1,<2",
+  "pillow>=10,<12",
+  "colorthief>=0.2.1,<1",
+  "playwright>=1.42,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "ruff==0.5.*",
+  "pytest>=8,<9",
+  "pytest-timeout>=2.3,<3",
+  "sqlfluff>=3,<4",
+]
+# windows-only DAX testing deps installed by CI on windows-latest:
+# pyadomd==0.1.* ; platform_system == "Windows"
+# pythonnet>=3.0 ; platform_system == "Windows"
+
+[tool.setuptools]
+packages = ["scripts"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E","F","W","I","B","UP","SIM","RUF"]
+ignore = ["E501"]  # line length handled by formatter
+
+[tool.pytest.ini_options]
+timeout = 60
+testpaths = ["tests"]
+markers = [
+  "spike: slow integration spike tests against live Fabric workspace",
+]
+
+[tool.sqlfluff.core]
+dialect = "tsql"
+templater = "raw"
+
+[tool.sqlfluff.rules.capitalisation.keywords]
+capitalisation_policy = "upper"
