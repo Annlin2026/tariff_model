@@ -6,8 +6,8 @@
     "name": "itrade_tariff_model",
     "dataset_id": "217458bd-40a3-4684-ab00-faa5e65232fc",
     "workspace": "IH_DataTeam_Ann (aa4e76f5-3e7a-4de2-a6d5-6ab0815cbfd8)",
-    "tables": ["fact_tariff_rate", "dim_country", "dim_country_partner", "dim_hs_code", "dim_tariff_detail", "dim_time_year"],
-    "relationships": 6,
+    "tables": ["fact_tariff_rate", "dim_country", "dim_country_partner", "dim_hs_code", "dim_time_year"],
+    "relationships": 5,
     "measures": 4,
     "perspective": "Tariff",
     "mode": "directLake (GOLD_FACT_TARIFF_RATE @ comtrade_ralph_dev, Trade_Data_Warehouse)"
@@ -31,6 +31,9 @@
     },
     "evidence": "status/tariff_split_validation.json"
   },
+  "amendments": [
+    "2026-07-09 dim_tariff_detail + fact_tariff_type relationship removed (decision 0101): zero report-layer references, zero measure dependencies; redeployed (framing 34.5s), 4 validation probes re-passed, table confirmed unqueryable while dim_country intact (617 rows)"
+  ],
   "open_items": [
     "CI/CD automation deferred per user 2026-07-09: SP taitra-mcp-fabric needs Member role on workspace aa4e76f5 before spec's deploy_model.py/GitHub Actions path runs headless"
   ]

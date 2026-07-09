@@ -16,9 +16,8 @@ fabric-cicd 部署、REST executeQueries live 驗證）。
 | dim_country | GOLD_DIM_COUNTRY |
 | dim_country_partner | GOLD_DIM_COUNTRY（role-playing 進口國軸，ADR 0023/issue79） |
 | dim_hs_code | GOLD_DIM_HS_CODE |
-| dim_tariff_detail | V_DIM_TARIFF_DETAIL |
 | dim_time_year | 時間維度 |
-| 關聯 ×6 | fact_tariff_importer(inactive)/exporter/importer_role/hs/type/time |
+| 關聯 ×5 | fact_tariff_importer(inactive)/exporter/importer_role/hs/time |
 | 量測 ×4 | Avg/Min/Max Tariff Rate %、Preferential Rate % |
 | Perspective | Tariff |
 

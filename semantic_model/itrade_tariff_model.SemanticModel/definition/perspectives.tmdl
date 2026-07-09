@@ -3,4 +3,3 @@ perspective Tariff
     perspectiveTable dim_country
     perspectiveTable dim_country_partner
     perspectiveTable dim_hs_code
-    perspectiveTable dim_tariff_detail

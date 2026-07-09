@@ -16,7 +16,6 @@ ref expression DatabaseQuery
 ref table dim_country
 ref table dim_country_partner
 ref table dim_hs_code
-ref table dim_tariff_detail
 ref table fact_tariff_rate
 ref table dim_time_year
 

@@ -22,11 +22,6 @@ TABLES = DEF / "tables"
         # dim_hs_code rebound 2026-04-22 to first-class GOLD_DIM_HS_CODE
         # (warehouse Phase F addendum delivered 6,885 rows — interim V_DIM_HS_CODE view deprecated).
         ("dim_hs_code.tmdl", "GOLD_DIM_HS_CODE", "comtrade_ralph_dev"),
-        # dim_tariff_detail bound to V_DIM_TARIFF_DETAIL view (PBI-owned bridge
-        # per warehouse agent P1.4 response 2026-04-22 — warehouse explicitly
-        # declined to build first-class GOLD_DIM_TARIFF_DETAIL for Phase 1).
-        # View derives 106 distinct TARIFF_TYPE rows from GOLD_FACT_TARIFF_DUTY_DETAILS.
-        ("dim_tariff_detail.tmdl", "V_DIM_TARIFF_DETAIL", "comtrade_ralph_dev"),
     ],
 )
 def test_dim_table_exists_and_points_at_gold(table_file, entity_name, schema_name):
@@ -41,4 +36,14 @@ def test_dim_table_exists_and_points_at_gold(table_file, entity_name, schema_nam
 def test_spike_minimal_removed():
     assert not (TABLES / "_spike_minimal.tmdl").exists(), (
         "_spike_minimal.tmdl should have been removed in P3 Iter 1"
+    )
+
+
+def test_dim_tariff_detail_removed():
+    """Removed 2026-07-09 (user decision): zero references in the report layer
+    (TARIFF3.0/4.0 visuals, filters, bookmarks) and in the model's measures.
+    The fact grain still carries fact_tariff_rate[tariff_type] untouched."""
+    assert not (TABLES / "dim_tariff_detail.tmdl").exists(), (
+        "dim_tariff_detail was removed from the split model — do not re-add "
+        "without a report-layer consumer"
     )

@@ -6,7 +6,7 @@ DEF = REPO_ROOT / "semantic_model" / "itrade_tariff_model.SemanticModel" / "defi
 
 
 def test_tariff_relationships_have_expected_topology():
-    """Assert the 6 tariff relationships exist with correct active/inactive
+    """Assert the 5 tariff relationships exist with correct active/inactive
     topology, scoped to fact_tariff_* so later phases adding non-tariff
     relationships don't break this test (P2a Iter 14.5 rescoping).
 
@@ -17,6 +17,9 @@ def test_tariff_relationships_have_expected_topology():
     (進口國 rows) — so fact_tariff_exporter flipped active,
     fact_tariff_importer flipped inactive (USERELATIONSHIP fallback), and
     fact_tariff_importer_role (→ dim_country_partner) was added.
+
+    2026-07-09 split-model change: fact_tariff_type dropped together with
+    dim_tariff_detail (zero report-layer references; user decision).
     """
     text = (DEF / "relationships.tmdl").read_text(encoding="utf-8")
     # Only line-start `relationship fact_tariff_*` declarations.
@@ -26,7 +29,6 @@ def test_tariff_relationships_have_expected_topology():
         "fact_tariff_exporter",
         "fact_tariff_importer_role",
         "fact_tariff_hs",
-        "fact_tariff_type",
         "fact_tariff_time",
     }, f"unexpected tariff relationship set: {sorted(tariff_decls)}"
 
@@ -48,15 +50,14 @@ def test_tariff_relationships_have_expected_topology():
         f"actual inactive tariff rels: {inactive}"
     )
 
-    # The other five tariff rels are active.
+    # The other four tariff rels are active.
     active = [n for n in tariff_decls if "isActive: true" in _block(n)]
     assert set(active) == {
         "fact_tariff_exporter",
         "fact_tariff_importer_role",
         "fact_tariff_hs",
-        "fact_tariff_type",
         "fact_tariff_time",
-    }, f"expected 5 active tariff rels; actual: {sorted(active)}"
+    }, f"expected 4 active tariff rels; actual: {sorted(active)}"
 
     # Role wiring: exporter axis on dim_country, importer axis on the
     # role-playing dim_country_partner (issue #79 root fix).
@@ -70,8 +71,11 @@ def test_perspective_file_names_tariff():
     text = (DEF / "perspectives.tmdl").read_text(encoding="utf-8")
     assert "perspective Tariff" in text
     for needed in ("fact_tariff_rate", "dim_country", "dim_country_partner",
-                   "dim_hs_code", "dim_tariff_detail"):
+                   "dim_hs_code"):
         assert needed in text
+    assert "dim_tariff_detail" not in text, (
+        "dim_tariff_detail was removed from the split model (2026-07-09)"
+    )
 
 
 def test_model_refs_relationships_and_perspectives():

@@ -22,12 +22,6 @@ relationship fact_tariff_hs
     isActive: true
     crossFilteringBehavior: oneDirection
 
-relationship fact_tariff_type
-    fromColumn: fact_tariff_rate.tariff_type
-    toColumn: dim_tariff_detail.tariff_type
-    isActive: true
-    crossFilteringBehavior: oneDirection
-
 relationship fact_tariff_time
     fromColumn: fact_tariff_rate.txn_year
     toColumn: dim_time_year.year

@@ -2,7 +2,7 @@
   "dataset_name": "itrade_tariff_model",
   "dataset_id": "217458bd-40a3-4684-ab00-faa5e65232fc",
   "workspace_id": "aa4e76f5-3e7a-4de2-a6d5-6ab0815cbfd8",
-  "request_id": "a84e2a90-0d7a-4734-948c-bece24667bb6",
-  "framing_seconds": 46.33,
+  "request_id": "38f833d8-0fad-4038-ae57-23c663513c99",
+  "framing_seconds": 34.52,
   "credential": "AzureCliCredential (user; SP lacks workspace role)"
 }
